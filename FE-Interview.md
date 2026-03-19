@@ -359,3 +359,155 @@ function nextTick(fn) {
 微任务（Microtask）：Promise.then、MutationObserver、queueMicrotask。在当前宏任务的同步代码执行完毕后立即执行，在浏览器渲染（Layout/Paint）之前。会被连续清空（微任务中产生的新微任务也在本轮执行），如果不断产生微任务会阻塞渲染。
 宏任务（Macrotask）：setTimeout、setInterval、setImmediate、MessageChannel、I/O、UI 渲染。每次事件循环只执行一个宏任务，执行完后检查微任务队列并清空，然后可能进行渲染，再执行下一个宏任务。不同宏任务之间浏览器有机会渲染。
 Vue 选择微任务的核心原因：数据变更 → 触发 watcher 更新队列 → 在微任务中 flush 队列 → DOM 更新 → 浏览器渲染。整个过程在一帧内完成，用户感知不到中间状态。如果用宏任务，数据变更和 DOM 更新之间可能插入一次浏览器渲染，导致闪烁。
+
+5. 控制反转（IoC）与依赖注入（DI）
+5.1 控制反转（Inversion of Control）
+传统模式：代码主动创建和管理依赖。"我需要什么，我自己去 new"。
+jsclass UserService {
+  constructor() {
+    this.db = new MySQLDatabase();     // 紧耦合，主动控制依赖
+    this.logger = new FileLogger();
+  }
+}
+控制反转：把"创建和管理依赖"的控制权从组件内部转移到外部容器或框架。"我需要什么，你给我"。
+控制反转是一种设计原则，依赖注入是实现它的具体方式之一。其他实现方式还有服务定位器（Service Locator）、事件驱动等。
+5.2 依赖注入（Dependency Injection）
+依赖注入是控制反转最常见的实现方式，核心思想是：不在组件内部创建依赖，而是从外部注入。
+三种注入方式：
+js// 1. 构造函数注入（最常用）
+class UserService {
+  constructor(db, logger) {
+    this.db = db;
+    this.logger = logger;
+  }
+}
+const service = new UserService(new PostgresDB(), new ConsoleLogger());
+
+// 2. Setter 注入
+class UserService {
+  setDatabase(db) { this.db = db; }
+}
+
+// 3. 接口注入（TypeScript/Java 中通过接口约束）
+5.3 前端中的具体场景
+React Context 就是一种依赖注入：
+jsx// Provider 注入依赖
+<ThemeContext.Provider value={theme}>
+  <App />
+</ThemeContext.Provider>
+
+// 消费者获取依赖，无需关心来源
+function Button() {
+  const theme = useContext(ThemeContext);
+}
+Vue 的 provide/inject：
+js// 祖先组件提供依赖
+provide('apiService', new ApiService());
+
+// 后代组件注入
+const api = inject('apiService');
+Angular 的 DI 系统：Angular 是前端框架中 DI 最完整的实现，通过装饰器和模块系统实现自动注入：
+ts@Injectable({ providedIn: 'root' })
+class UserService {
+  constructor(private http: HttpClient) {} // 自动注入
+}
+Node.js 后端（NestJS）：
+ts@Injectable()
+class CatsService {
+  constructor(private catsRepository: CatsRepository) {}
+}
+5.4 IoC/DI 的核心价值
+
+解耦：组件不依赖具体实现，只依赖抽象（接口）。
+可测试：轻松替换依赖为 mock 对象，单元测试更简单。
+可扩展：切换实现（如从 MySQL 换到 PostgreSQL）只需修改注入配置，不改业务代码。
+关注点分离：组件只关心"做什么"，不关心依赖"怎么创建"。
+
+
+6. 手写 asyncPool
+6.1 题目理解
+asyncPool(poolLimit, array, iteratorFn) 实现一个异步并发池：以不超过 poolLimit 的并发数执行 iteratorFn，处理 array 中的每个元素，全部完成后返回结果数组。
+6.2 ES7 async/await 实现（推荐）
+jsasync function asyncPool(poolLimit, array, iteratorFn) {
+  const results = [];          // 存储所有结果
+  const executing = new Set(); // 当前正在执行的 Promise 集合
+
+  for (const [index, item] of array.entries()) {
+    // 创建当前任务的 Promise
+    const p = Promise.resolve().then(() => iteratorFn(item, index, array));
+
+    results.push(p);
+    executing.add(p);
+
+    // 任务完成后从执行集合中移除
+    const clean = () => executing.delete(p);
+    p.then(clean, clean);
+
+    // 如果达到并发上限，等待最快完成的任务
+    if (executing.size >= poolLimit) {
+      await Promise.race(executing);
+    }
+  }
+
+  // 等待所有任务完成
+  return Promise.all(results);
+}
+6.3 纯 Promise 实现（不依赖 async/await）
+jsfunction asyncPool(poolLimit, array, iteratorFn) {
+  let i = 0;
+  const results = [];
+  const executing = [];
+
+  function enqueue() {
+    // 所有任务已入队，返回 Promise.all 等待全部完成
+    if (i === array.length) {
+      return Promise.all(results);
+    }
+
+    const item = array[i];
+    const index = i++;
+
+    const p = Promise.resolve()
+      .then(() => iteratorFn(item, index, array));
+
+    results.push(p);
+
+    // 任务完成后从执行队列中移除
+    const e = p.then(() => executing.splice(executing.indexOf(e), 1));
+    executing.push(e);
+
+    // 如果达到并发上限，等待一个完成后再继续入队
+    let r = Promise.resolve();
+    if (executing.length >= poolLimit) {
+      r = Promise.race(executing);
+    }
+
+    return r.then(() => enqueue());
+  }
+
+  return enqueue();
+}
+6.4 使用示例
+js// 模拟异步任务
+const timeout = (ms) => new Promise(resolve =>
+  setTimeout(() => resolve(ms), ms)
+);
+
+// 同时最多执行 2 个任务
+asyncPool(2, [1000, 5000, 3000, 2000], timeout)
+  .then(results => {
+    console.log(results); // [1000, 5000, 3000, 2000]
+  });
+
+// 执行时序：
+// t=0:     开始 1000ms, 5000ms       （2个并发）
+// t=1000:  1000ms完成, 开始 3000ms    （2个并发）
+// t=4000:  3000ms完成, 开始 2000ms    （2个并发）
+// t=5000:  5000ms完成                 （1个并发）
+// t=6000:  2000ms完成, 全部结束
+6.5 关键设计点
+
+为什么用 Promise.race：当并发池满时，需要等待"任意一个"任务完成才能继续放入新任务，Promise.race 正好返回最先完成的 Promise。
+为什么要从 executing 中移除已完成的任务：如果不移除，Promise.race 会立即返回（已 resolved 的 Promise 再 race 还是立即 resolve），导致并发限制失效。
+错误处理：当前实现中，如果某个任务抛出错误，Promise.all 会直接 reject。如果需要容错（类似 Promise.allSettled），可以在 iteratorFn 外层 catch 错误。
+保序：结果数组中的顺序与输入数组一致（通过 results.push 顺序保证），而非任务完成的顺序。
