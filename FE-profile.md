@@ -1,6 +1,6 @@
 # 陈明远 | 资深Web前端开发工程师
 
-> 8年前端开发经验 · 交易所/金融科技方向 · 全栈视野
+> 8年前端开发经验 · 4年交易所/金融科技深耕 · Vue & React 双栈
 
 ---
 
@@ -8,15 +8,12 @@
 
 | | |
 |---|---|
-| **姓名** | 陈明远 |
-| **年龄** | 31岁 |
-| **学历** | 本科 · 华南理工大学 · 计算机科学与技术 |
-| **工作年限** | 8年 |
-| **手机** | 138-XXXX-8866 |
+| **手机** | +852 XXXX 8866 |
 | **邮箱** | chenmydev@gmail.com |
 | **GitHub** | github.com/chenmydev |
-| **现居城市** | 中国香港 |
-| **求职状态** | 在职，考虑优质机会 | 
+| **现居** | 香港 |
+| **学历** | 华南理工大学 · 计算机科学与技术（本科） |
+| **求职状态** | 在职，考虑优质机会 |
 
 ---
 
@@ -24,156 +21,89 @@
 
 **目标岗位：** 高级/资深前端开发工程师 · 前端架构师  
 **期望行业：** 交易所 · 金融科技 · 互联网证券  
-**期望薪资：** 面议  
 
 ---
 
-## 💡 个人优势
+## 💡 核心优势
 
-- 8年Web前端开发经验，其中4年金融科技/交易所领域深耕，熟悉证券交易、行情展示、订单系统等核心业务场景
-- 精通 Vue 2/3 和 React 技术栈，主导过多个企业级大型项目从 0 到 1 的架构设计与落地
-- 在高性能渲染、实时数据推送（WebSocket）、Canvas/WebGL 可视化方面有丰富的实战经验
-- 主导过前端工程化体系建设，包括组件库、脚手架、CI/CD 流水线、性能监控平台
-- 熟练使用 AI 辅助开发工具（Cursor、Claude Code、GitHub Copilot），显著提升开发效率
-- 有跨团队协作与技术方案推动经验，具备良好的沟通表达和文档输出能力
+- 精通 Vue 2/3 和 React，主导过多个百万级用户产品从 0 到 1 架构与落地
+- 深耕交易所场景：实时行情、K线渲染、订单簿高频更新、WebSocket 数据流
+- 主导前端工程化体系建设：组件库（60+ 组件）、Monorepo、CI/CD、性能监控
+- 熟练运用 Cursor / Claude Code / Copilot 等 AI 工具，团队编码效率提升 40%+
 
 ---
 
 ## 🛠 技术栈
 
-### 核心技能
-
 | 分类 | 技术 |
 |------|------|
-| **框架** | Vue 2 / Vue 3（Composition API）、React 18（Hooks）、Next.js、Nuxt.js |
+| **框架** | Vue 2/3（Composition API）、React 18（Hooks）、Next.js、Nuxt.js |
 | **语言** | TypeScript、JavaScript（ES6+）、HTML5、CSS3 |
-| **状态管理** | Pinia、Vuex、Redux Toolkit、Zustand、Jotai |
-| **UI / 组件库** | Element Plus、Ant Design、自研组件库 |
-| **构建工具** | Vite、Webpack 5、Rollup、Turbopack |
-| **样式方案** | Tailwind CSS、SCSS/Less、CSS Modules、Styled Components |
-| **数据可视化** | ECharts、D3.js、Canvas 2D、TradingView（轻量图表库） |
+| **状态管理** | Pinia、Vuex、Redux Toolkit、Zustand |
+| **可视化** | ECharts、D3.js、Canvas 2D、TradingView Charting Library |
 | **实时通信** | WebSocket、Socket.IO、SSE |
+| **构建 & 工程化** | Vite、Webpack 5、pnpm Monorepo、ESLint、Husky |
 | **测试** | Vitest、Jest、Cypress、Playwright |
-| **工程化** | ESLint、Prettier、Husky、Commitlint、Changesets |
-| **DevOps** | Docker、GitHub Actions、GitLab CI、Nginx |
+| **DevOps** | Docker、GitLab CI、GitHub Actions、Nginx |
 | **AI 工具** | Cursor、Claude Code、GitHub Copilot、v0 |
-
-### 了解 / 有一定经验
-
-Node.js（Express / Koa）、Python（数据脚本）、PostgreSQL、Redis、gRPC、微前端（qiankun / Module Federation）、Electron、React Native
 
 ---
 
 ## 💼 工作经历
 
-### 🏢 XX金融科技有限公司（香港）
+### XX金融科技有限公司（香港）— 高级前端 / Tech Lead
 
-**高级前端开发工程师 / 前端 Tech Lead** | 2022.03 — 至今
+**2022.03 — 至今** · 持牌互联网券商，百万级用户
 
-> 公司为持牌互联网券商，提供港股、美股、期权等交易服务，用户规模百万级。
+**实时行情交易系统**
+- Vue 3 + TS + Pinia 架构，WebSocket 毫秒级行情推送，单页维护 200+ 股票数据流
+- Canvas 自研 K 线图组件，支持多周期切换，60fps 渲染；订单簿虚拟滚动 + 增量更新，CPU 占用降低 65%
+- 首屏从 3.2s → 1.1s，Lighthouse Performance 92+
 
-**核心职责：**
-
-- 负责交易核心系统的前端架构设计与技术选型，带领 5 人前端小组
-- 主导行情页面、交易下单模块、持仓管理等核心功能的开发与性能优化
-- 推动前端工程化体系升级，建立组件库、构建规范和代码质量门禁
-- 与后端、产品、QA 跨团队协作，参与技术评审和方案讨论
-
-**核心项目：**
-
-**1. 实时行情交易系统（Web端）**
-- 基于 Vue 3 + TypeScript + Pinia 架构，承载港股/美股实时行情展示与交易下单
-- 使用 WebSocket 实现毫秒级行情推送，单页面同时维护 200+ 股票的实时数据流
-- 基于 Canvas 自研 K 线图组件，支持分时、日K、周K 等多周期切换，60fps 流畅渲染
-- 订单簿（Order Book）采用虚拟滚动 + 增量更新策略，CPU 占用降低 65%
-- 首屏加载时间从 3.2s 优化至 1.1s（Lighthouse Performance 92+）
-
-**2. 前端组件库 & 设计系统**
-- 基于 Vue 3 + TypeScript 自研金融业务组件库（60+ 组件），覆盖行情展示、交易表单、图表、通知等场景
-- 使用 Storybook 构建文档站，配合 Chromatic 实现视觉回归测试
-- 通过 Changesets 管理版本发布，支持按需引入，包体积优化 40%
-- 组件库被 3 个业务线复用，大幅减少重复开发
-
-**3. 前端工程化与监控体系**
-- 搭建基于 Vite + pnpm workspace 的 Monorepo 工程架构
-- 集成 ESLint、Prettier、Commitlint、Husky，统一团队代码规范
-- 接入自研前端监控 SDK，实时采集错误日志、性能指标、用户行为，日均处理 500 万+ 条数据
-- 构建 GitLab CI 流水线：代码检查 → 单元测试 → 构建 → Docker 部署 → 灰度发布
+**组件库 & 工程化体系**
+- 自研金融业务组件库 60+ 组件，Storybook 文档 + Chromatic 视觉回归，3 条业务线复用
+- 搭建 Vite + pnpm Monorepo 架构，GitLab CI 全链路流水线（lint → test → build → 灰度发布）
+- 自研前端监控 SDK，日均采集 500 万+ 条错误/性能/行为数据
 
 ---
 
-### 🏢 XX互联网科技公司（深圳）
+### XX互联网科技公司（深圳）— 中级 → 高级前端
 
-**中级 → 高级前端开发工程师** | 2019.06 — 2022.02
+**2019.06 — 2022.02** · 跨境电商 SaaS 平台，日活 10 万+
 
-> 公司为跨境电商 SaaS 平台，服务数千家商户，日活用户 10 万+。
-
-**核心项目：**
-
-**1. 商户管理后台（React）**
-- 基于 React + TypeScript + Ant Design Pro 构建商户端管理后台
-- 实现权限管理、多维度数据报表、商品管理、订单流程等核心模块
-- 使用 React Query 管理服务端状态，配合乐观更新提升交互体验
-- 引入微前端方案（qiankun），将历史 jQuery 项目渐进式迁移至 React
-
-**2. 数据可视化大屏**
-- 基于 ECharts + D3.js 构建运营数据大屏，实时展示 GMV、订单量、转化率等关键指标
-- 适配 4K 分辨率，采用 rem + scale 双方案确保多分辨率完美展示
-- 数据层使用 WebSocket 实时推送，图表实现平滑过渡动画
+- React + TS + Ant Design Pro 构建商户管理后台，引入 qiankun 微前端渐进迁移 jQuery 遗留系统
+- ECharts + D3.js 运营数据大屏，WebSocket 实时推送，适配 4K 多分辨率
 
 ---
 
-### 🏢 XX软件开发有限公司（广州）
+### XX软件开发有限公司（广州）— 初级 → 中级前端
 
-**初级 → 中级前端开发工程师** | 2017.07 — 2019.05
+**2017.07 — 2019.05** · 企业级软件服务商
 
-> 公司为企业级软件服务商，主要面向政府和大型企业。
-
-- 参与政务 OA 系统、企业内部管理平台的前端开发
-- 使用 Vue 2 + Element UI 构建多个管理后台项目
-- 负责公共组件封装、页面性能优化、浏览器兼容性处理
-- 从初级成长为中级，独立负责模块开发与 Code Review
+- Vue 2 + Element UI 开发政务 OA 及企业管理平台，负责公共组件封装与性能优化
 
 ---
 
-## 🤖 AI 辅助开发实践
+## 🤖 AI 提效实践
 
-| 工具 | 应用场景 | 提效效果 |
-|------|---------|---------|
-| **Cursor** | 日常编码、代码补全、重构建议 | 编码效率提升约 40% |
-| **Claude Code** | 复杂逻辑梳理、架构方案讨论、代码审查 | 方案设计效率提升 50%+ |
-| **GitHub Copilot** | 单元测试生成、样板代码编写 | 测试覆盖率编写速度提升 3 倍 |
-| **v0** | UI 原型快速搭建、组件 Demo 生成 | 原型阶段节省 60% 时间 |
+- **日常开发**：Cursor + Copilot 编码提效 40%，Claude Code 辅助架构设计与 Code Review
+- **团队推广**：建立 AI Prompt 最佳实践文档，搭建 AI Code Review Bot 集成 GitLab CI
+- **文档产出**：AI 辅助技术文档 & API 文档生成，产出效率提升 3 倍
 
-**AI 工作流实践：**
-- 建立了团队内部的 AI Prompt 最佳实践文档，推广 AI 辅助开发规范
-- 利用 Claude Code 构建自动化 Code Review Bot，集成到 GitLab CI 流程中
-- 使用 AI 工具辅助技术文档编写和 API 文档生成，文档产出效率提升 3 倍
+---
+
+## 📝 开源 & 影响力
+
+- 自研 K 线图组件库 GitHub 800+ Star，向 Vue / Vite 生态贡献多个 PR
+- 个人技术博客 80+ 篇原创，定期组织团队技术分享，曾参与香港前端社区 Meetup 演讲
 
 ---
 
 ## 📚 教育背景
 
-**华南理工大学** | 计算机科学与技术（本科）| 2013.09 — 2017.06
-
-- CET-6 通过，具备良好的英文技术文档阅读和日常沟通能力
-- 在校期间获 ACM 校赛银奖、优秀毕业设计
+**华南理工大学** · 计算机科学与技术（本科）· 2013 — 2017  
+CET-6 · ACM 校赛银奖 · 优秀毕业设计
 
 ---
 
-## 📝 开源 & 技术影响力
-
-- **个人技术博客**：累计发布 80+ 篇原创技术文章，涵盖前端架构、性能优化、金融场景实践
-- **开源贡献**：向 Vue 生态、Vite 插件社区提交过多个 PR，自研 K 线图组件库在 GitHub 获 800+ Star
-- **团队分享**：定期组织团队内部技术分享，主题涵盖 WebSocket 实战、Canvas 性能优化、AI 辅助开发等
-- **社区活动**：曾作为嘉宾参与香港前端技术社区 Meetup 分享
-
----
-
-## 🏅 自我评价
-
-我是一名注重工程质量与用户体验的前端工程师。在金融交易场景中积累了对高性能、高可用系统的深入理解，擅长将复杂业务需求转化为清晰的技术方案。我相信优秀的前端不仅是写好代码，更是在团队中推动工程文化和技术进步。我积极拥抱 AI 技术变革，将 AI 工具融入日常开发流程，持续探索提效的最佳实践。期待在交易所/金融科技领域继续深耕，参与更具挑战性的技术项目。
-
----
-
-> *本简历仅为模板示例，个人信息均为虚构，请根据实际情况修改后使用。*
+> *本简历为模板示例，个人信息均为虚构，请根据实际情况修改使用。*
